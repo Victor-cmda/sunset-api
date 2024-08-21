@@ -8,16 +8,20 @@ import {
   DeleteDateColumn,
 } from 'typeorm';
 import { TodoList } from '../../todo/entity/todo.entity';
+import { ApiProperty } from '@nestjs/swagger';
 
 @Entity({ name: 'users' })
 export class User {
   @PrimaryGeneratedColumn('uuid')
+  @ApiProperty()
   id: string;
 
   @Column()
+  @ApiProperty()
   name: string;
 
   @Column({ unique: true })
+  @ApiProperty()
   email: string;
 
   @Column()

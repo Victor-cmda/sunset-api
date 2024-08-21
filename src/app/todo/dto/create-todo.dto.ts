@@ -1,3 +1,4 @@
+import { ApiProperty } from '@nestjs/swagger';
 import { IsHexColor, IsNotEmpty, MaxLength } from 'class-validator';
 
 export class CreateTodoItemDto {
@@ -7,9 +8,11 @@ export class CreateTodoItemDto {
   @MaxLength(100, {
     message: 'O nome da tarefa deve ter menos de 100 caracteres',
   })
+  @ApiProperty()
   name: string;
 
   @IsNotEmpty()
+  @ApiProperty()
   isDone: boolean;
 }
 
@@ -20,6 +23,7 @@ export class CreateTodoListDto {
   @MaxLength(100, {
     message: 'O nome da lista de tarefa deve ter menos de 100 caracteres',
   })
+  @ApiProperty()
   name: string;
 
   @IsNotEmpty({
@@ -28,5 +32,6 @@ export class CreateTodoListDto {
   @IsHexColor({
     message: 'Informe uma cor hexadecimal válida',
   })
+  @ApiProperty()
   color: string;
 }

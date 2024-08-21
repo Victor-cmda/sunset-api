@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { TodoList, TodoItem } from './entity/todo.entity';
 import { CreateTodoItemDto, CreateTodoListDto } from './dto/create-todo.dto';
+import { User } from '../user/entity/user.entity';
 
 @Injectable()
 export class TodoService {
@@ -13,7 +14,7 @@ export class TodoService {
     private readonly todoItemRepository: Repository<TodoItem>,
   ) {}
 
-  async createList(name: string, color: string, user: CreateTodoListDto) {
+  async createList(name: string, color: string, user: User) {
     const list = this.todoListRepository.create({ name, color, user });
     try {
       return await this.todoListRepository.save(list);
